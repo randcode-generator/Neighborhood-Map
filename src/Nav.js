@@ -5,6 +5,11 @@ class Nav extends Component {
   changed(e) {
     this.props.filterChange(e.target.value)
   }
+
+  clicked(e) {
+    this.props.onClicked(e.target.id)
+  }
+
 	render() {
     return(
       <nav id="drawer">
@@ -15,9 +20,9 @@ class Nav extends Component {
             {
               this.props.items.map(function(item, i) {
                 return (
-                  <li key={i}><a href="#">{item.name}</a></li>
+                  <li key={i}><span id={item.id} onClick={this.clicked.bind(this)}>{item.name}</span></li>
                 )
-              })
+              }, this)
             }
           </ul>
         </div>

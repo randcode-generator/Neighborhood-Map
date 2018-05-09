@@ -19,12 +19,13 @@ li:last-child {
   border: none;
 }
 
-li a {
+li span {
   text-decoration: none;
   color: #000;
   display: block;
 }
 
-li a:hover {
+li span:hover {
   background: #f6f6f6;
+  cursor: pointer;
 }

@@ -380,16 +380,18 @@ class App extends Component {
         }
     }
   }
+
   componentDidMount() {
     let j = this.test2()
     this.setState({
+      itemClicked: null,
       allBusinesses: j.businesses,
       businesses: j.businesses
     })
   }
 
   filterChange(e) {
-    const { allBusinesses, businesses } = this.state
+    const { allBusinesses } = this.state
     var updated = allBusinesses
     if(e.length > 0) {
       updated = allBusinesses.filter(function(item) {
@@ -403,16 +405,25 @@ class App extends Component {
     })
   }
 
+  clicked(id) {
+    this.setState({
+      itemClicked: id
+    })
+  }
+
   render() {
     if(this.state == null) {
       return (<p>error</p>)
     } else {
-      const { businesses } = this.state
+      const { businesses, itemClicked } = this.state
       return (
         <div id="divUp">
           <Nav items={ businesses } 
-            filterChange={ this.filterChange.bind(this) }></Nav>
-          <Map items={ businesses }></Map>
+            filterChange={ this.filterChange.bind(this) }
+            onClicked={ this.clicked.bind(this) }>
+          </Nav>
+          <Map items={ businesses }
+            itemClicked={ itemClicked }></Map>
         </div>);
     }
   }
