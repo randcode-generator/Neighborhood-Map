@@ -2,9 +2,18 @@ import React, { Component } from 'react';
 import scriptLoader from 'react-async-script-loader'
 
 class Map extends Component {
+  constructor(props) {
+    super(props);
+    this.mapLoaded = false
+    this.markers = []
+  }
   componentDidUpdate (prevProps, prevState, snapshot) {
+    var map = this.map
+    var markers = this.markers
+
     const { isScriptLoaded, isScriptLoadSucceed } = this.props
-    if(isScriptLoaded && isScriptLoadSucceed) {
+    if(isScriptLoaded && isScriptLoadSucceed && this.mapLoaded === false) {
+      this.mapLoaded = true
       var options = {
         zoom: 14,
         center: {
@@ -13,20 +22,24 @@ class Map extends Component {
         }
       }
 
-      var map = new window.google.maps.Map(document.getElementById('Gmap'), options);
-
-      this.props.items.map(function(item, i) {
-        new window.google.maps.Marker({
+      map = this.map = new window.google.maps.Map(document.getElementById('Gmap'), options);
+      this.props.items.forEach(function(item, i) {
+        var m = new window.google.maps.Marker({
           map: map,
-          animation: window.google.maps.Animation.DROP,
           position: {lat: item.coordinates.latitude, lng: item.coordinates.longitude}
         })
+        markers.push({'id': item.id, 'marker':m})
       })
-      // var marker = new window.google.maps.Marker({
-      //   map: map,
-      //   animation: window.google.maps.Animation.DROP,
-      //   position: {lat: 40.599282, lng: -73.975999}
-      // });
+    } else {
+      markers.forEach(function(item, i) {
+        //item.marker.setMap(null)
+        var found = this.props.items.find((x) => { return x.id === item.id })
+        if(found === undefined) {
+          item.marker.setVisible(false)
+        } else {
+          item.marker.setVisible(true)
+        }
+      }, this)
     }
   }
 

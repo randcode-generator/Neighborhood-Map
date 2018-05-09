@@ -383,7 +383,23 @@ class App extends Component {
   componentDidMount() {
     let j = this.test2()
     this.setState({
+      allBusinesses: j.businesses,
       businesses: j.businesses
+    })
+  }
+
+  filterChange(e) {
+    const { allBusinesses, businesses } = this.state
+    var updated = allBusinesses
+    if(e.length > 0) {
+      updated = allBusinesses.filter(function(item) {
+        return item.name.toLowerCase().search(
+          e.toLowerCase()) !== -1;
+      })
+    }
+
+    this.setState({
+      businesses: updated
     })
   }
 
@@ -391,11 +407,12 @@ class App extends Component {
     if(this.state == null) {
       return (<p>error</p>)
     } else {
-      const { businesses } = this.state;
+      const { businesses } = this.state
       return (
         <div id="divUp">
-          <Nav items={businesses}></Nav>
-          <Map items={businesses}></Map>
+          <Nav items={ businesses } 
+            filterChange={ this.filterChange.bind(this) }></Nav>
+          <Map items={ businesses }></Map>
         </div>);
     }
   }
