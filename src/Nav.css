@@ -1,0 +1,41 @@
+#filterText {
+  width: 80%;
+  padding: 12px 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font: 21px sans-serif;
+  margin-bottom: 20px;
+}
+
+#yelpLogo {
+  position: absolute;
+  bottom: 0;
+  z-index: -1;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+}
+
+li {
+  font: 200 20px/1.5 Helvetica, Verdana, sans-serif;
+  border-bottom: 1px solid #ccc;
+}
+
+li:last-child {
+  border: none;
+}
+
+li span {
+  text-decoration: none;
+  color: #000;
+  display: block;
+}
+
+li span:hover {
+  background: #f6f6f6;
+  cursor: pointer;
+}
