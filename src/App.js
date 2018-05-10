@@ -8,6 +8,8 @@ class App extends Component {
     let options = {
       headers: {
         'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
+        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
         'Authorization': `Bearer ${YELP_KEY}` 
       }
     }
