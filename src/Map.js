@@ -9,10 +9,11 @@ class Map extends Component {
   }
 
   infoWindowHTML(data) {
-    return `<h2><a href="${data.url}" target="_blank">${data.name}</a></h2>` +
+    return `<h2>${data.name}</h2>` +
       `${data.address1}<br>` +
       `${data.address2}<br>` +
-      `${data.display_phone}<br>`      
+      `${data.display_phone}<br><br>` +
+      `<a href="${data.url}" target="_blank">Read more on Yelp</a>`     
   }
 
   componentDidUpdate (prevProps, prevState, snapshot) {

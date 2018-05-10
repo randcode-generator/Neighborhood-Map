@@ -15,7 +15,7 @@ class Nav extends Component {
     return(
       <nav id="drawer">
         <h2>Neighborhood Map</h2>
-        <input type="text" onChange={this.changed.bind(this)}/>
+        <input type="text" id="filterText" placeholder="Filter..." onChange={this.changed.bind(this)}/>
         <div className="stores">
           <ul>
             {
@@ -27,7 +27,7 @@ class Nav extends Component {
             }
           </ul>
         </div>
-        <div>
+        <div id="yelpLogo">
           <img src={yelpImg} />
         </div>
       </nav>
