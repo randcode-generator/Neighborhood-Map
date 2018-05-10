@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Nav.css'
+import yelpImg from './img/Yelp.png'
 
 class Nav extends Component {
   changed(e) {
@@ -25,6 +26,9 @@ class Nav extends Component {
               }, this)
             }
           </ul>
+        </div>
+        <div>
+          <img src={yelpImg} />
         </div>
       </nav>
     )
