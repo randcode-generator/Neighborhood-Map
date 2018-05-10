@@ -7,7 +7,7 @@ class App extends Component {
   fetchBusinesses() {
     let options = {
       headers: {
-        'method': 'GET',
+        'Access-Control-Allow-Origin': '*',
         'Authorization': `Bearer ${YELP_KEY}` 
       }
     }
