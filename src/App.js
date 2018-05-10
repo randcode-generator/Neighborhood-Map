@@ -7,9 +7,6 @@ class App extends Component {
   fetchBusinesses() {
     let options = {
       headers: {
-        'Access-Control-Allow-Origin': 'https://udacity-203512.firebaseapp.com/',
-        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
-        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
         'Authorization': `Bearer ${YELP_KEY}` 
       }
     }
@@ -26,11 +23,7 @@ class App extends Component {
       console.log(error)
     }
 
-    var url = `https://api.yelp.com/v3/businesses/search?term=delis&latitude=${DEFAULT_GPS_LOCATION.lat}&longitude=${DEFAULT_GPS_LOCATION.lng}&limit=8`
-    
-    if(useProxy) {
-      url = `${proxyUrl}${url}`
-    }
+    var url = `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=delis&latitude=${DEFAULT_GPS_LOCATION.lat}&longitude=${DEFAULT_GPS_LOCATION.lng}&limit=8`
 
     fetch(url, options)
       .then(res => res.json())

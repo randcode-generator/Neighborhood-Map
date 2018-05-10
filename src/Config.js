@@ -4,6 +4,3 @@ export const DEFAULT_GPS_LOCATION = {
 	lat: 40.594069,
 	lng: -73.976514
 }
-
-export const useProxy = true
-export const proxyUrl = 'https://cors-anywhere.herokuapp.com/'
