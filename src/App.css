@@ -16,7 +16,7 @@ main, #Gmap {
 
 /* Since we're mobile-first, by default, the drawer is hidden. */
 nav {
-  width: 300px;
+  width: 250px;
   height: 100%;
   position: absolute;
   /* This trasform moves the drawer off canvas. */
@@ -24,7 +24,11 @@ nav {
   transform: translate(-300px, 0);
   /* Optionally, we animate the drawer. */
   transition: transform 0.3s ease;
+
+  background-color: white;
+  z-index: 1;
 }
+
 nav.open {
   -webkit-transform: translate(0, 0);
   transform: translate(0, 0);

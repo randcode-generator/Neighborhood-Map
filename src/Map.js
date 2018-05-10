@@ -16,6 +16,13 @@ class Map extends Component {
       `<a href="${data.url}" target="_blank">Read more on Yelp</a>`     
   }
 
+  menuClicked(e) {
+    let drawer = document.querySelector('#drawer')
+    let cList = drawer.classList
+    console.log(drawer)
+    cList.toggle('open')
+  }
+
   componentDidUpdate (prevProps, prevState, snapshot) {
     var map = this.map
     var markers = this.markers
@@ -81,7 +88,7 @@ class Map extends Component {
     return(
       <main>
         <div id="Gmap"></div>
-        <a id="menu" style={{'position':'absolute', 'top':'40px', 'right':'0px', 'backgroundColor':'white'}}>
+        <a id="menu" style={{'position':'absolute', 'top':'40px', 'right':'0px', 'backgroundColor':'white'}} onClick={this.menuClicked.bind(this)}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"/>
           </svg>
