@@ -7,7 +7,7 @@ class App extends Component {
   fetchBusinesses() {
     let options = {
       headers: {
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': 'https://udacity-203512.firebaseapp.com/',
         'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
         'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
         'Authorization': `Bearer ${YELP_KEY}` 
