@@ -4,7 +4,12 @@ html, body, #root, #divUp {
   margin: 0px;
 }
 
-main {
+a#menu svg {
+  width: 40px;
+  fill: #000;
+}
+
+main, #Gmap {
   width: 100%;
   height: 100%;
 }
@@ -28,6 +33,10 @@ nav.open {
 /* If there is enough space (> 600px), we keep the drawer open all the time. */
 @media (min-width: 600px) {
 
+  #menu {
+    display: none;
+  }
+
   /* We open the drawer. */
   nav {
     position:relative;
@@ -43,7 +52,7 @@ nav.open {
     flex-flow: row nowrap;
   }
 
-  main {
+  main, #Gmap {
     width: auto;
     /* Flex-grow streches the main content to fill all available space. */
     flex-grow: 1;

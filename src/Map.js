@@ -79,7 +79,14 @@ class Map extends Component {
 
 	render() {
     return(
-      <main id="Gmap"></main>
+      <main>
+        <div id="Gmap"></div>
+        <a id="menu" style={{'position':'absolute', 'top':'40px', 'right':'0px', 'backgroundColor':'white'}}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"/>
+          </svg>
+        </a>
+      </main>
     )
   }
 }

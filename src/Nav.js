@@ -28,7 +28,8 @@ class Nav extends Component {
           </ul>
         </div>
         <div id="yelpLogo">
-          <img src={yelpImg} />
+          <span style={{ 'margin':'10px', 'fontSize': '22px' }}>Powered by:</span>
+          <img src={yelpImg} alt="Yelp"/>
         </div>
       </nav>
     )
