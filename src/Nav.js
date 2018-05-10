@@ -20,7 +20,7 @@ class Nav extends Component {
           <div className="stores">
             <ul>
               {
-                this.props.items.map(function(item, i) {
+                this.props.items.map((item, i) => {
                   return (
                     <li key={i}><span id={item.id} onClick={this.clicked.bind(this)}>{item.name}</span></li>
                   )
