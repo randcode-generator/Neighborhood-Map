@@ -33,10 +33,10 @@ class Map extends Component {
       return
     }
 
-    let itemClicked = this.props.itemClicked
-    if(itemClicked != null && itemClicked !== prevProps.itemClicked) {
+    let businessIDClicked = this.props.businessIDClicked
+    if(businessIDClicked != null && businessIDClicked !== prevProps.businessIDClicked) {
       markers.forEach((item, i) => {
-        if(item.id === itemClicked) {
+        if(item.id === businessIDClicked) {
           item.marker.setAnimation(window.google.maps.Animation.BOUNCE)
           item.clickFunc()
           window.setTimeout(() => item.marker.setAnimation(null), 1300)

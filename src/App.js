@@ -14,7 +14,7 @@ class App extends Component {
     var processJson = (result) => {
       if(result.error === undefined) {
         this.setState({
-          itemClicked: null,
+          businessIDClicked: null,
           allBusinesses: result.businesses,
           businesses: result.businesses
         })
@@ -41,22 +41,22 @@ class App extends Component {
 
   filterChange(e) {
     const { allBusinesses } = this.state
-    var updated = allBusinesses
+    var updatedList = allBusinesses
     if(e.length > 0) {
-      updated = allBusinesses.filter((item) => {
+      updatedList = allBusinesses.filter((item) => {
         return item.name.toLowerCase().search(
           e.toLowerCase()) !== -1;
       })
     }
 
     this.setState({
-      businesses: updated
+      businesses: updatedList
     })
   }
 
-  clicked(id) {
+  businessClicked(id) {
     this.setState({
-      itemClicked: id
+      businessIDClicked: id
     })
   }
 
@@ -66,15 +66,15 @@ class App extends Component {
     } else if(this.state.errors != null) {
       return (<h2>{this.state.errors}</h2>)
     } else {
-      const { businesses, itemClicked } = this.state
+      const { businesses, businessIDClicked } = this.state
       return (
         <div id="divUp">
           <Nav items={ businesses } 
             filterChange={ this.filterChange.bind(this) }
-            onClicked={ this.clicked.bind(this) }>
+            businessClicked={ this.businessClicked.bind(this) }>
           </Nav>
           <Map items={ businesses }
-            itemClicked={ itemClicked }></Map>
+            businessIDClicked={ businessIDClicked }></Map>
         </div>);
     }
   }
