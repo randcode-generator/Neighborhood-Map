@@ -12,7 +12,6 @@ class App extends Component {
     }
 
     var processJson = (result) => {
-      console.log(result.error)
       if(result.error === undefined) {
         this.setState({
           itemClicked: null,
