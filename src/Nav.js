@@ -11,18 +11,29 @@ class Nav extends Component {
     this.props.businessClicked(e.target.id)
   }
 
+  businessKeyDown(e) {
+    var type = e.type;
+    if (type === 'keydown') {
+      if (e.keyCode === 13 || e.keyCode === 32) {
+        this.businessClicked(e)
+        e.preventDefault();
+      }
+    }
+  }
+
 	render() {
     return(
       <nav id="drawer">
         <div style={{'marginLeft':'20px', 'marginRight':'20px'}}>
           <h2>Neighborhood Map</h2>
-          <input type="text" id="filterText" placeholder="Filter..." onChange={this.filterChange.bind(this)}/>
+          <label htmlFor="filterText" className="visuallyhidden">Filter</label>
+          <input type="text" name="filterText" tabIndex="0" id="filterText" placeholder="Filter..." onChange={this.filterChange.bind(this)}/>
           <div className="stores" style={{'minHeight':'200px', 'backgroundColor': 'white'}}>
             <ul>
               {
                 this.props.items.map((item, i) => {
                   return (
-                    <li key={i}><span id={item.id} onClick={this.businessClicked.bind(this)}>{item.name}</span></li>
+                    <li key={i}><span tabIndex="0" role="button" id={item.id} onClick={this.businessClicked.bind(this)} onKeyDown={this.businessKeyDown.bind(this)}>{item.name}</span></li>
                   )
                 }, this)
               }

@@ -10,11 +10,13 @@ class Map extends Component {
   }
 
   infoWindowHTML(data) {
-    return `<h2>${data.name}</h2>` +
+    return "<div tabIndex=\"0\">" +
+      `<h2>${data.name}</h2>` +
       `${data.address1}<br>` +
       `${data.address2}<br>` +
       `${data.display_phone}<br><br>` +
-      `<a href="${data.url}" target="_blank">Read more on Yelp</a>`     
+      `<a href="${data.url}" target="_blank">Read more on Yelp</a>` +
+      "</div>"    
   }
 
   menuItemClicked(e) {
