@@ -12,22 +12,28 @@ class App extends Component {
     }
 
     var processJson = (result) => {
-      this.setState({
-        itemClicked: null,
-        allBusinesses: result.businesses,
-        businesses: result.businesses
-      })
+      console.log(result.error)
+      if(result.error === undefined) {
+        this.setState({
+          itemClicked: null,
+          allBusinesses: result.businesses,
+          businesses: result.businesses
+        })
+      } else {
+        errorFunc('yelp', JSON.stringify(result.error))
+      }
     }
 
-    var error = (error) => {
-      console.log(error)
+    var errorFunc = (app, error) => {
+      this.setState({errors:`${app} => ${error}`})
     }
 
     var url = `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=delis&latitude=${DEFAULT_GPS_LOCATION.lat}&longitude=${DEFAULT_GPS_LOCATION.lng}&limit=8`
 
     fetch(url, options)
       .then(res => res.json())
-      .then(processJson, error)
+      .then(data => processJson(data))
+      .catch(error => errorFunc('fetch', error))
   }
 
   componentDidMount() {
@@ -58,6 +64,8 @@ class App extends Component {
   render() {
     if(this.state == null) {
       return (<h2>Loading...</h2>)
+    } else if(this.state.errors != null) {
+      return (<h2>{this.state.errors}</h2>)
     } else {
       const { businesses, itemClicked } = this.state
       return (

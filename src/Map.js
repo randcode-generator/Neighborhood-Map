@@ -29,6 +29,10 @@ class Map extends Component {
 
     var infowindow = new window.google.maps.InfoWindow();
 
+    if(this.props.items === undefined) {
+      return
+    }
+
     let itemClicked = this.props.itemClicked
     if(itemClicked != null && itemClicked !== prevProps.itemClicked) {
       markers.forEach((item, i) => {
