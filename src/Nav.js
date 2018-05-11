@@ -12,10 +12,6 @@ class Nav extends Component {
   }
 
 	render() {
-    if(this.props.items === undefined) {
-      return(<h2>No businesses found</h2>)
-    }
-
     return(
       <nav id="drawer">
         <div style={{'marginLeft':'20px', 'marginRight':'20px'}}>

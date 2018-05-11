@@ -27,11 +27,17 @@ class Map extends Component {
     var map = this.map
     var markers = this.markers
 
-    var infowindow = new window.google.maps.InfoWindow();
-
     if(this.props.items === undefined) {
       return
     }
+
+    const { isScriptLoaded, isScriptLoadSucceed } = this.props
+    if(isScriptLoaded === false || isScriptLoadSucceed === false) {
+      this.props.mapError("Maps", "Google Maps failed to load")
+      return
+    }
+
+    var infowindow = new window.google.maps.InfoWindow();
 
     let businessIDClicked = this.props.businessIDClicked
     if(businessIDClicked != null && businessIDClicked !== prevProps.businessIDClicked) {
@@ -44,7 +50,6 @@ class Map extends Component {
       })
     }
 
-    const { isScriptLoaded, isScriptLoadSucceed } = this.props
     if(isScriptLoaded && isScriptLoadSucceed && this.mapLoaded === false) {
       this.mapLoaded = true
       let options = {
