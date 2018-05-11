@@ -35,7 +35,7 @@ nav.open {
 }
 
 /* If there is enough space (> 600px), we keep the drawer open all the time. */
-@media (min-width: 600px) {
+@media screen and (min-width: 600px) {
 
   #menu {
     display: none;
