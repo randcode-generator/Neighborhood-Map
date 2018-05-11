@@ -17,7 +17,7 @@ class Nav extends Component {
         <div style={{'marginLeft':'20px', 'marginRight':'20px'}}>
           <h2>Neighborhood Map</h2>
           <input type="text" id="filterText" placeholder="Filter..." onChange={this.changed.bind(this)}/>
-          <div className="stores" style={{'min-height':'200px', 'background-color': 'white'}}>
+          <div className="stores" style={{'minHeight':'200px', 'backgroundColor': 'white'}}>
             <ul>
               {
                 this.props.items.map((item, i) => {

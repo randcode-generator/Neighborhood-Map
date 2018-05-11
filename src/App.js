@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Map from './Map.js'
 import Nav from './Nav.js'
-import { YELP_KEY, DEFAULT_GPS_LOCATION, useProxy, proxyUrl } from './Config.js'
+import { YELP_KEY, DEFAULT_GPS_LOCATION } from './Config.js'
 
 class App extends Component {
   fetchBusinesses() {
